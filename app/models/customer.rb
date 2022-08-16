@@ -14,7 +14,6 @@ class Customer < ApplicationRecord
     validates :postal_code
     validates :address
     validates :telephone_number
-    validates :password_confirmation
     
   end
 
