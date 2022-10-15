@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
     def index
+      @items = Item.all
     end
 
     def new
@@ -12,11 +13,12 @@ class Admin::ItemsController < ApplicationController
           redirect_to admin_items_path
         else
         #   flash[:item_created_error] = "商品情報が正常に保存されませんでした。"
-          redirect_to new_admin_item_path
+         render 'new'
         end
     end
 
     def show
+      @item = Item.find(params[:id])
     end
 
     def edit

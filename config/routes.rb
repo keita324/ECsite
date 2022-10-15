@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     resources :customers, only: [:edit, :update]
+    resources :items, only: [:index,]
   end
 
 
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
   # 顧客用

@@ -1,0 +1,20 @@
+<div class="row login-row">
+    
+        <h2><%= "商品一覧 （全#{@items.count}件）" %></h2>
+        <% @items.each do |item| %>
+            <div class="product-box">
+                <table class="table">
+                    <tr>
+                        <th><%= image_tag item.get_image(100,100) %></th>
+                    </tr>
+                    <tr>
+                        <th><%= item.name %></th>
+                    </tr>
+                    <tr>
+                        <th>￥<%= (item.price_tax_out * 1.1).to_i %></th>
+                    </tr>
+                </table>
+            </div>
+        <% end %>
+
+</div>

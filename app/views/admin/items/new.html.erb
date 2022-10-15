@@ -3,6 +3,15 @@
     <h5>商品新規登録</h5>
   </div>
   
+   <% if @item.errors.any? %>
+    <h3><%= @item.errors.count %>error occurrence</h3><!--エラーメッセ-->
+    <ul>
+        <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+    <% end %>
+  
   
 <%= form_with model: @item,url: admin_items_path, local:true do |f| %>
   <div class="field">
@@ -22,7 +31,7 @@
 
   <div class="field">
     <%= f.label :"ジャンル"%>
-    <%= f.text_field :genre_id, placeholder: "" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
   </div>
 
   <div class="field">

@@ -1,0 +1,15 @@
+<h4>商品詳細</h4>
+<%= image_tag @item.get_image(100,100) %>
+商品名 <%= @item.name %>
+商品説明 <%= @item.introduction%>
+ジャンル <%= @item.genre.name%>
+税込価格(税抜価格) <%= (@item.price_tax_out * 1.1).to_i %>(<%= @item.price_tax_out %>)円
+販売ステータス <% if @item.status == true %>
+				販売中
+				<% else %>
+	            売切れ
+				<% end %>
+			 <div class="form-group">
+  </div>	
+<%= link_to "編集する", edit_admin_item_path, class: 'btn btn-success' %>
+
