@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     resources :customers, only: [:edit, :update]
-    resources :items, only: [:index,]
+    resources :items, only: [:index, :show]
   end
 
 
