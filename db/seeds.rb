@@ -9,3 +9,27 @@ Admin.create!(
     email: "aaa@aaa",
     password: "aaaaaa"
 )
+
+Genre.create!(
+    name: "ケーキ",
+)
+
+item = Item.create!(
+    genre_id: "1",
+    name: "いちごケーキ",
+    introduction: "おいしい",
+    price_tax_out: "1000",
+    status: "true"
+)
+
+    item.image.attach(io: File.open(Rails.root.join('app/assets/images/itigo-cake.jpg')),filename: 'itigo-cake.jpg')
+
+item = Item.create!(
+    genre_id: "1",
+    name: "チーズケーキ",
+    introduction: "うまい",
+    price_tax_out: "1000",
+    status: "false"
+)
+
+    item.image.attach(io: File.open(Rails.root.join('app/assets/images/cheese-cake.jpg')),filename: 'cheese-cake.jpg')
