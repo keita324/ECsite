@@ -1,5 +1,5 @@
 <h4>ショッピングカート</h4>
-<%= link_to "カートを空にする", destroy_all_path(@cart_items), method: :delete%>
+<%= link_to "カートを空にする", destroy_all_path(@cart_items), method: :delete, data: {confirm: "本当に消しますか？"}%>
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -34,7 +34,7 @@
   </tbody>
 </table>
 
-<%= link_to "買い物を続ける", items_path %>
+<%= link_to "買い物を続ける", root_path %>
 
 情報入力に進む
 
