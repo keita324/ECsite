@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     resources :customers, only: [:edit, :update]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
   end
 
 
