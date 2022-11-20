@@ -1,1 +1,39 @@
-admin/homes#top
+<h4>注文履歴一覧</h4>
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>
+            <%= link_to admin_order_path(order.id) do %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S')  %>
+            <% end %>
+        </td>
+        <td><%= order.name %></td>
+        <td>
+          <% @amount = 0 %>
+          <% order.order_details.each do |order_detail|%>
+            <% @amount += order_detail.amount%>
+          <% end %>
+          <%= @amount %>
+          
+          <!--each使わないパターン-->
+          <!--複数レコード.sum(:カラム名)-->
+          <!--sumはあとのカラムを全部足す-->
+         <%#= order.order_details.sum(:amount) %> 
+        </td>
+        
+
+        <!--amountをeachで書きたいけどわからない-->
+        <td><%= order.order_status_i18n %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

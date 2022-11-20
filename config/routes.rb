@@ -6,11 +6,16 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
+    get '/orders/thanks' => 'orders#thanks', as: 'order_thanks'
     resources :customers, only: [:edit, :update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show]
+    post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
+   
+    
   end
 
 
@@ -19,6 +24,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
   end
 
   # 顧客用
