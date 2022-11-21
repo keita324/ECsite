@@ -56,5 +56,5 @@
     <%= f.hidden_field :customer_id, value: current_customer.id %>
     <%= f.hidden_field :payment_method, value: @order.payment_method %>
     <%= f.hidden_field :postage, value: 800 %>
-    <%= f.submit "注文を確定する",class:"btn btn-primary col-xs-12" %>
+    <%= f.submit "注文を確定する",class:"btn btn-primary col-xs-12", data: {confirm: "本当に購入しますか？"}  %>
   <% end %>
