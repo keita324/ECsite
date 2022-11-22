@@ -1,6 +1,9 @@
 class Admin::ItemsController < ApplicationController
     def index
       @items = Item.all
+      if params[:name].present?
+      @items = @items.get_by_name params[:name]
+      end
     end
 
     def new

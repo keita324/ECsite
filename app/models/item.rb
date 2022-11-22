@@ -24,5 +24,9 @@ class Item < ApplicationRecord
       (price_tax_out * 1.1).floor
     end
     
+    scope :get_by_name, ->(name) {
+    where("name like ?", "%#{name}%")
+    }
+        
     
 end
