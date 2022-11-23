@@ -1,6 +1,22 @@
-<div class="row login-row">
-    
-        <h4><%= "商品一覧 （全#{@items.count}件）" %></h2>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h4>ジャンル検索</h4>
+      
+      <% @genres.each do |genre| %>
+      <tr>
+        <td>
+        <%= link_to items_path(genre_id: genre.id) do%>
+          <%= genre.name %>
+        <% end %>
+        </td>
+      </tr>
+      </br>
+    <% end %>
+
+    </div>
+    <div class='col-md-8 offset-md-1'>
+        <h4><%= "#{@title}一覧 （全#{@items.count}件）" %></h2>
         <% @items.each do |item| %>
             <div class="product-box">
                 <table class="table">
@@ -18,5 +34,6 @@
                 </table>
             </div>
         <% end %>
-
+    </div>
+  </div>
 </div>
