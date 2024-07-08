@@ -4,36 +4,27 @@
       <h4>ジャンル検索</h4>
       
       <% @genres.each do |genre| %>
-      <tr>
-        <td>
-        <%= link_to items_path(genre_id: genre.id) do%>
-          <%= genre.name %>
-        <% end %>
-        </td>
-      </tr>
-      </br>
-    <% end %>
-
+        <div class="mb-3">
+          <%= link_to items_path(genre_id: genre.id) do %>
+            <%= genre.name %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
+    
     <div class='col-md-8 offset-md-1'>
-        <h4><%= "#{@title}一覧 （全#{@items.count}件）" %></h2>
+      <h4><%= "#{@title}一覧 （全#{@items.count}件）" %></h4>
+      <div class="row">
         <% @items.each do |item| %>
-            <div class="product-box">
-                <table class="table">
-                    <tr>
-                        <th><%= link_to item_path(item) do%>
-                             <%= image_tag item.get_image(100,100) %>
-                             <% end %></th>
-                    </tr>
-                    <tr>
-                        <th><%= item.name %></th>
-                    </tr>
-                    <tr>
-                        <th>￥<%= (item.price_tax_out * 1.1).to_i %></th>
-                    </tr>
-                </table>
-            </div>
+          <div class="col-md-4">
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.get_image(200, 200) %>
+            <% end %>
+            <p><%= item.name %></p>
+            <p>￥<%= (item.price_tax_out * 1.1).to_i %></p>
+          </div>
         <% end %>
+      </div>
     </div>
   </div>
 </div>

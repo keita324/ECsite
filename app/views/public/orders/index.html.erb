@@ -1,0 +1,13 @@
+<h1>注文履歴一覧</h1>
+
+<% @orders.each do |order| %>
+  <h2>注文番号: <%= order.order_number %></h2>
+  <p>注文日時: <%= order.created_at %></p>
+
+  <h3>注文された商品一覧</h3>
+  <ul>
+    <% order.order_details.each do |order_detail| %>
+      <li><%= order_detail.item.name %></li>
+    <% end %>
+  </ul>
+<% end %>

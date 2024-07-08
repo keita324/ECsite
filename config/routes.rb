@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
-   
-    
+
+
   end
 
 
